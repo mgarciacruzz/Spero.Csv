@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Spero.Csv.Parser;
+using Spero.Csv;
 
 namespace Spero.Csv.Parser.Tests
 {

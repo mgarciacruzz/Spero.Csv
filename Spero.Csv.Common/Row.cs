@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Spero.Csv.Parser
+namespace Spero.Csv
 {
     public class Row
     {
@@ -12,7 +12,8 @@ namespace Spero.Csv.Parser
         private Column[] _columns;
 
         #region Properties
-        public Column[] Columns {
+        public Column[] Columns
+        {
             get
             {
                 return _columns;
@@ -29,7 +30,7 @@ namespace Spero.Csv.Parser
 
         public int Count => Columns.Length;
         #endregion
-        
+
         public Row()
         {
             _index = 0;
@@ -56,7 +57,7 @@ namespace Spero.Csv.Parser
 
         public override string ToString()
         {
-            return string.Join(",", Columns.Select(x => string.IsNullOrEmpty(x.Value)?"":x.Value).ToArray());
+            return string.Join(",", Columns.Select(x => string.IsNullOrEmpty(x.Value) ? "" : x.Value).ToArray());
         }
     }
 }

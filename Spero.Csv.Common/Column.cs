@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Spero.Csv.Parser
-{
+namespace Spero.Csv
+{ 
     public class Column
     {
         #region Properties
@@ -14,7 +14,7 @@ namespace Spero.Csv.Parser
         public int Col { get; private set; }
         #endregion
 
-        internal Column(string value, int row, int col)
+        public Column(string value, int row, int col)
         {
             Row = row;
             Col = col;

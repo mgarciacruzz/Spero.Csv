@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9516E36B-960F-4913-B5D8-0DBE0E50C205}</ProjectGuid>
+    <ProjectGuid>{E73F1881-C8DD-4ED0-96BC-04B0465D7F93}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Spero.Csv.Parser.Tests</RootNamespace>
-    <AssemblyName>Spero.Csv.Parser.Tests</AssemblyName>
+    <RootNamespace>Spero.Csv.Serializer.Tests</RootNamespace>
+    <AssemblyName>Spero.Csv.Serializer.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,20 +49,21 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ParserTests.cs" />
+    <Compile Include="DeserializerTests.cs" />
+    <Compile Include="Mocks\NoAttrOnPropsSerializableClassMock.cs" />
+    <Compile Include="Mocks\OverridenColNamesSerializableClassMock.cs" />
+    <Compile Include="Mocks\RandomOrderedSerializableClassMock.cs" />
+    <Compile Include="Mocks\SerializableClassMock.cs" />
+    <Compile Include="SerializerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Spero.Csv.Common\Spero.Csv.Common.csproj">
-      <Project>{4c3b353b-8925-4fa8-9734-66841ed19491}</Project>
-      <Name>Spero.Csv.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Spero.Csv.Parser\Spero.Csv.Parser.csproj">
-      <Project>{96cd819e-48b6-4d37-a8d0-6d2b707483c4}</Project>
-      <Name>Spero.Csv.Parser</Name>
+    <ProjectReference Include="..\Spero.Csv.Serializer\Spero.Csv.Serializer.csproj">
+      <Project>{5dcf8a92-7f61-4eee-9157-3271b6d5278d}</Project>
+      <Name>Spero.Csv.Serializer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
