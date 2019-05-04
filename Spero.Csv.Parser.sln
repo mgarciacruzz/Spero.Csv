@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spero.Csv.Parser", "Spero.Csv.Parser\Spero.Csv.Parser.csproj", "{96CD819E-48B6-4D37-A8D0-6D2B707483C4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{832864A2-D0DC-41C6-B02C-4507979F0803}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spero.Csv.Parser.Tests", "Spero.Csv.Parser.Tests\Spero.Csv.Parser.Tests.csproj", "{9516E36B-960F-4913-B5D8-0DBE0E50C205}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{96CD819E-48B6-4D37-A8D0-6D2B707483C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96CD819E-48B6-4D37-A8D0-6D2B707483C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96CD819E-48B6-4D37-A8D0-6D2B707483C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9516E36B-960F-4913-B5D8-0DBE0E50C205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9516E36B-960F-4913-B5D8-0DBE0E50C205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9516E36B-960F-4913-B5D8-0DBE0E50C205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9516E36B-960F-4913-B5D8-0DBE0E50C205}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9516E36B-960F-4913-B5D8-0DBE0E50C205} = {832864A2-D0DC-41C6-B02C-4507979F0803}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BE025A40-D070-4D0F-9722-AED1BBD65682}

@@ -20,5 +20,10 @@ namespace Spero.Csv.Parser
             Type = type;
             Position = pos;
         }
+
+        public override string ToString()
+        {
+            return $"{Type}: {Value}";
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace Spero.Csv.Parser
         NewLine,
         DoubleQuote,
         SingleQuote,
-        Value
+        Value,
+        Default
     }
 }

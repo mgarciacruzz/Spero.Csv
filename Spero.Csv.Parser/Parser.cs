@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Spero.Csv.Parser
 {
-    public class Parser
+    public class Parser: IDisposable
     {
         private Scanner _scanner;
+        private List<Column> _columns;
         private int _rowNumber;
         
         public static Parser Parse(string filepath)
@@ -36,13 +37,15 @@ namespace Spero.Csv.Parser
 
         public bool Read(Row row)
         {
+            // Clear temp columns for the new row
+            _columns = new List<Column>();
             var token = _scanner.Read();
 
         start:
             switch (token.Type)
             {
                 case TokenType.Comma:
-                    row.Add(null, _rowNumber, token.Position); goto comma;
+                    Add(null, token.Position); goto comma;
                 case TokenType.EOF:
                     return false;
                 case TokenType.NewLine:
@@ -52,7 +55,7 @@ namespace Spero.Csv.Parser
                 case TokenType.SingleQuote:
                     goto singleQuote;
                 case TokenType.Value:
-                    row.Add(token.Value, _rowNumber, token.Position); goto value;
+                    Add(token.Value, token.Position); goto value;
                 default:
                     throw new CsvParseException();
             }
@@ -62,17 +65,17 @@ namespace Spero.Csv.Parser
             switch (token.Type)
             {
                 case TokenType.NewLine:
-                    row.Add(null, _rowNumber, token.Position); goto newLine;
+                    Add(null, token.Position); goto newLine;
                 case TokenType.Comma:
-                    row.Add(null, _rowNumber, token.Position); goto comma;
+                    Add(null, token.Position); goto comma;
                 case TokenType.EOF:
-                    row.Add(null, _rowNumber, token.Position); return true;
+                    Add(null, token.Position); goto newLine;
                 case TokenType.DoubleQuote:
                     goto doubleQuote;
                 case TokenType.SingleQuote:
                     goto singleQuote;
                 case TokenType.Value:
-                    row.Add(token.Value, _rowNumber, token.Position); goto value;
+                    Add(token.Value, token.Position); goto value;
                 default:
                     throw new CsvParseException();
             };
@@ -82,9 +85,9 @@ namespace Spero.Csv.Parser
             switch (token.Type)
             {
                 case TokenType.DoubleQuote:
-                    row.Add(null, _rowNumber, token.Position); goto endDoubleQuote;
+                    Add(null, token.Position); goto endDoubleQuote;
                 case TokenType.Value:
-                    row.Add(token.Value, _rowNumber, token.Position); goto valueDoubleQuote;
+                    Add(token.Value, token.Position); goto valueDoubleQuote;
                 default:
                     throw new CsvParseException();
             }
@@ -107,9 +110,9 @@ namespace Spero.Csv.Parser
             switch (token.Type)
             {
                 case TokenType.SingleQuote:
-                    row.Add(null, _rowNumber, token.Position); goto endSingleQuote;
+                    Add(null, token.Position); goto endSingleQuote;
                 case TokenType.Value:
-                    row.Add(token.Value, _rowNumber, token.Position); goto valueSingleQuote;
+                    Add(token.Value, token.Position); goto valueSingleQuote;
                 default:
                     throw new CsvParseException();
             }
@@ -142,7 +145,7 @@ namespace Spero.Csv.Parser
             switch (token.Type)
             {
                 case TokenType.DoubleQuote:
-                    goto endSingleQuote;
+                    goto endDoubleQuote;
                 default:
                     throw new CsvParseException();
             }
@@ -161,10 +164,20 @@ namespace Spero.Csv.Parser
             }
 
         newLine:
+            row.Columns = _columns.ToArray();
             _rowNumber++;
             return true;
         }
 
+        private void Add(string value, int pos)
+        {
+            
+            _columns.Add(new Column(value, _rowNumber, pos));
+        }
 
+        public void Dispose()
+        {
+            _scanner.Dispose();
+        }
     }
 }

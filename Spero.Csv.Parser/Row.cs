@@ -8,34 +8,55 @@ namespace Spero.Csv.Parser
 {
     public class Row
     {
+        private int _index;
+        private Column[] _columns;
+
         #region Properties
-        public Column[] Columns => _cols.ToArray();
+        public Column[] Columns {
+            get
+            {
+                return _columns;
+            }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException();
 
-        public int Count => _cols.Count;
+                _index = Math.Max(value.Length - 1, 0);
+                _columns = value;
+            }
+        }
+
+        public int Count => Columns.Length;
         #endregion
-
-        private List<Column> _cols;
         
         public Row()
         {
-            _cols = new List<Column>();
+            _index = 0;
+            _columns = new Column[0];
         }
 
         internal void Add(string value, int row, int col)
         {
             var column = new Column(value, row, col);
-            _cols.Add(column);
+            Array.Resize(ref _columns, Count + 1);
+            _columns[_index++] = column;
         }
 
         public Column this[int index]
         {
             get
             {
-                if (index > _cols.Count - 1)
+                if (index > Count - 1)
                     throw new IndexOutOfRangeException();
 
-                return _cols.ElementAt(index);
+                return Columns[index];
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Join(",", Columns.Select(x => string.IsNullOrEmpty(x.Value)?"":x.Value).ToArray());
         }
     }
 }
