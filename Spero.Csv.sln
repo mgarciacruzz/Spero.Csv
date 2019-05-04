@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spero.Csv.Parser", "Spero.C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{832864A2-D0DC-41C6-B02C-4507979F0803}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spero.Csv.Parser.Tests", "Spero.Csv.Parser.Tests\Spero.Csv.Parser.Tests.csproj", "{9516E36B-960F-4913-B5D8-0DBE0E50C205}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spero.Csv.Parser.Tests", "Tests\Spero.Csv.Parser.Tests\Spero.Csv.Parser.Tests.csproj", "{9516E36B-960F-4913-B5D8-0DBE0E50C205}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spero.Csv.Serializer", "Spero.Csv.Serializer\Spero.Csv.Serializer.csproj", "{5DCF8A92-7F61-4EEE-9157-3271B6D5278D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spero.Csv.Common", "Spero.Csv.Common\Spero.Csv.Common.csproj", "{4C3B353B-8925-4FA8-9734-66841ED19491}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spero.Csv.Serializer.Tests", "Spero.Csv.Serializer.Tests\Spero.Csv.Serializer.Tests.csproj", "{E73F1881-C8DD-4ED0-96BC-04B0465D7F93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spero.Csv.Serializer.Tests", "Tests\Spero.Csv.Serializer.Tests\Spero.Csv.Serializer.Tests.csproj", "{E73F1881-C8DD-4ED0-96BC-04B0465D7F93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
